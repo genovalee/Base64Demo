@@ -10,34 +10,30 @@ import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.stream.Stream;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Base64;
+
 public class Base64Test {
     public static void main(String[] args) {
-        String str = null;
-        String filePath = "c:/temp/2559941.bmp";
-        System.out.println(readLine(filePath));
-        str = readLine(filePath);
+        String filePath = "c:/temp/wonderlust_mac.png";
+        try {
+            // 讀取檔案內容為byte陣列
+            byte[] fileBytes = Files.readAllBytes(Paths.get(filePath));
 
-        // Base64編碼
-        byte[] encodedBytes = Base64.getEncoder().encode(str.getBytes());
-        String encodedStr = new String(encodedBytes);
-        System.out.println(encodedStr); // aGVsbG8gd29ybGQ=
-        System.out.println("-------------------------------");
+            // Base64編碼
+            byte[] encodedBytes = Base64.getEncoder().encode(fileBytes);
+            String encodedStr = new String(encodedBytes);
+            System.out.println(encodedStr);
 
-        // Base64解碼
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedStr.getBytes());
-        String decodedStr = new String(decodedBytes);
-        System.out.println(decodedStr); // hello world
-    }
+            System.out.println("-------------------------------");
 
-    private static String readLine(String filePath) {
-        StringBuilder contentBuilder = new StringBuilder();
-
-        try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
+            // Base64解碼
+            byte[] decodedBytes = Base64.getDecoder().decode(encodedStr);
+            System.out.println("Decoded bytes length: " + decodedBytes.length); // 檢查解碼後的byte陣列長度是否正確
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error reading file: " + e.getMessage());
         }
-
-        return contentBuilder.toString();
     }
 }
