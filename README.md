@@ -1,17 +1,6 @@
-package project1;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import java.io.OutputStream;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import java.util.Base64;
-
-public class Base64Demo {
+# 將PDF檔轉換成案Base64編碼
+### 使用try-with-resource語句可以確保資源被正確地關閉,即使在執行過程中發生了異常。
+<pre>
     public static void main(String[] args) {
         String filePath = "c:/temp/20160128-語言技術JSF.pdf";
         try {
@@ -32,4 +21,9 @@ public class Base64Demo {
             e.printStackTrace();
         }
     }
-}
+</pre>
+---
+*讀取來源PDF檔案*[c:/temp/20160128-語言技術JSF.pdf]
+---
+*還原目的PDF檔案*[c:/temp/test.pdf]
+---
