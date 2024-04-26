@@ -1,6 +1,5 @@
 # 將PDF檔轉換成案Base64編碼
 ### 使用try-with-resource語句可以確保資源被正確地關閉,即使在執行過程中發生了異常。
-<pre>
     public static void main(String[] args) {
         String filePath = "c:/temp/20160128-語言技術JSF.pdf";
         try {
@@ -21,7 +20,6 @@
             e.printStackTrace();
         }
     }
-</pre>
 ---
 *讀取來源PDF檔案*[c:/temp/20160128-語言技術JSF.pdf]
 ---
@@ -29,7 +27,6 @@
 ---
 ## 將圖檔轉換成base64編碼
 #### 程式範例
-<pre>
     public static void main(String[] args) {
         String filePath = "c:/temp/wonderlust_mac.png";
         try {
@@ -50,4 +47,3 @@
             System.err.println("Error reading file: " + e.getMessage());
         }
     }
-</pre>
